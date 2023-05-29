@@ -9,6 +9,10 @@ public class VendingMachine {
     private int volume;
     private ArrayList<Product> products;
 
+    /**
+     * Java Class 'VendingMachine' constructor
+     * @param volume sets Vending machine capacity
+     */
     public VendingMachine(int volume) {
         this.volume = volume;
         this.products = new ArrayList<Product>();

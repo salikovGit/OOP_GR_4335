@@ -1,12 +1,14 @@
 
 import Domen.Product;
-import VendingMachine.VendingMachine;
 
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 
 import javax.swing.*;
 
@@ -17,15 +19,15 @@ public class MainFrame extends JFrame {
     JTextField tfProductName;
 
 
-    JLabel lbWelcome;
+    JLabel buyApprovement;
 
     public void initialize(ArrayList<Product> products) {
 
-        JLabel lbBoxList = new JLabel("Products list", 0);
+        JLabel lbBoxList = new JLabel("Products list", SwingConstants.CENTER);
         lbBoxList.setFont(mainFont);
         JLabel lbChooseProduct = new JLabel("Choose product");
         lbChooseProduct.setFont(mainFont);
-        JTextField tfChooseProduct = new JTextField();
+        JTextField tfMonyeInput = new JTextField();
         lbBoxList.setFont(mainFont);
         JLabel blank = new JLabel("");
 
@@ -34,37 +36,55 @@ public class MainFrame extends JFrame {
         formPanel.add(lbBoxList);
         formPanel.add(blank);
         String[] productsList = new String[products.size()];
+
+        //вывод всех товаров
+        for (Product product : products) {
+            JLabel lbProductNames = new JLabel(product.getName() + " " + product.getPrice().toString() + " ₽", SwingConstants.LEADING);
+            lbProductNames.setFont(mainFont);
+            formPanel.add(lbProductNames);
+        }
+
+
+
         for (int i = 0; i < products.size(); i++) {
             productsList[i] = products.get(i).getName();
         }
 
-        JComboBox popUpList = new JComboBox<>(productsList);
+        JComboBox<String> popUpList = new JComboBox<>(productsList);
 
-        for (int i = 0; i < products.size(); i++) {
-            JLabel lbProductNames = new JLabel(products.get(i).getName() + " " + products.get(i).getPrice().toString() + " ₽", 10);
-            lbProductNames.setFont(mainFont);
-            formPanel.add(lbProductNames);
-        }
 
 
         formPanel.add(blank);
         formPanel.add(lbChooseProduct);
         formPanel.add(popUpList);
 
+        JLabel lbChoice = new JLabel();
+        lbChoice.setFont(mainFont);
+        formPanel.add(lbChoice);
+        popUpList.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String productBuy = (String) popUpList.getSelectedItem();
+                Double productPrice = 0.0;
+                for (Product product : products) {
+                    if (Objects.equals(productBuy, product.getName())) productPrice = product.getPrice();
+                    lbChoice.setText("Selected product - " + productBuy + ", please deposit " + productPrice + " ₽");
+                }
+            }
+        });
 
 
         JLabel lbProductName = new JLabel("Product name");
         lbProductName.setFont(mainFont);
 
 
-
+        formPanel.add(tfMonyeInput);
         tfProductName = new JTextField();
         tfProductName.setFont(mainFont);
 
 
-        lbWelcome = new JLabel();
-        lbWelcome.setFont(mainFont);
-
+        buyApprovement = new JLabel();
+        buyApprovement.setFont(mainFont);
 
 
         JButton btnOk = new JButton("Buy product");
@@ -73,12 +93,20 @@ public class MainFrame extends JFrame {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-
-
-                String firstName = tfProductName.getText();
-                String lastName = tfProductName.getText();
-                lbWelcome.setText("Hello " + firstName + " " + lastName);
-
+                Double byuersMoney = Double.parseDouble(tfMonyeInput.getText());
+                Map<String, Double> prices = HashMap.newHashMap(products.size());
+                for (Product product : products) {
+                    prices.put(product.getName(), product.getPrice());
+                }
+                String selectedProduct = (String) popUpList.getSelectedItem();
+                if (Objects.equals(prices.get(selectedProduct), byuersMoney)) {
+                    buyApprovement.setText("Success! Thank you!");
+                } else if (prices.get(selectedProduct) > byuersMoney) {
+                    buyApprovement.setText("Not enough money, try again");
+                } else {
+                    double change = byuersMoney - prices.get(selectedProduct);
+                    buyApprovement.setText("Success! Please don't forget your change " + change + " ₽");
+                }
 
             }
 
@@ -94,7 +122,8 @@ public class MainFrame extends JFrame {
 
                 tfProductName.setText("");
                 tfProductName.setText("");
-                lbWelcome.setText("");
+                buyApprovement.setText("");
+                lbChoice.setText("");
 
             }
 
@@ -114,7 +143,7 @@ public class MainFrame extends JFrame {
         mainPanel.add(formPanel, BorderLayout.NORTH);
 
 
-        mainPanel.add(lbWelcome, BorderLayout.CENTER);
+        mainPanel.add(buyApprovement, BorderLayout.CENTER);
 
 
         mainPanel.add(buttonPanel, BorderLayout.SOUTH);
@@ -129,16 +158,10 @@ public class MainFrame extends JFrame {
 
 
         setTitle("VendingMachines");
-        setSize(500, 600);
+        setSize(700, 600);
         setMaximumSize(new Dimension(300, 400));
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
     }
-
-//    public static void main(String[] arg)
-//    {
-//        MainFrame myFrame = new MainFrame();
-//        myFrame.initialize();
-//    }
 
 }
