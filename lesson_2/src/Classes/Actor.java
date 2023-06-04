@@ -1,11 +1,27 @@
 package Classes;
 
 import Interfaces.iActorBehaviour;
+import Interfaces.iReturnOrder;
 
-public abstract class Actor implements iActorBehaviour {
+public abstract class Actor implements iActorBehaviour, iReturnOrder {
     protected String name;
-    protected boolean isTakeOrder;
-    protected boolean isMakeOrder;
+    protected boolean isOrderTaken;
+    protected boolean isOrderMade;
+    protected boolean isReturnOrder;
+
+
+     public boolean isReturnOrder() {
+//            if (this.isReturnOrder()) {
+//                System.out.println("Client " + this.getName() + " want to return his order");
+//            } else {
+//                System.out.println("Client " + this.getName() + " doesn't want to return his order");
+//            }
+        return this.isReturnOrder;
+    }
+
+    public void setReturnOrder(boolean isReturnOrder) {
+        this.isReturnOrder = isReturnOrder;
+    }
 
     /**
      * Abstract Java class constructor for Market visitors

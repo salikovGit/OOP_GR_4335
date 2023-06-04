@@ -2,15 +2,20 @@ package Classes;
 
 import Interfaces.iActorBehaviour;
 
-public class TaxService implements iActorBehaviour  {
+public class TaxService extends Actor  {
 
-    private final String name;
     private boolean isTakeOrder;
     private boolean isMakeOrder;
 
-    public TaxService() {
-        this.name = "Tax audit";
+    /**
+     * Abstract Java class constructor for Market visitors
+     *
+     * @param name - Name of visitor
+     */
+    public TaxService(String name) {
+        super(name);
     }
+
 
     public String getName() {
         return name;
@@ -27,12 +32,12 @@ public class TaxService implements iActorBehaviour  {
     }
 
     @Override
-    public boolean isMakeOrder() {
+    public boolean isOrderMade() {
         return isMakeOrder;
     }
 
     @Override
-    public boolean isTakeOrder() {
+    public boolean isOrderTaken() {
         return isTakeOrder;
     }
 

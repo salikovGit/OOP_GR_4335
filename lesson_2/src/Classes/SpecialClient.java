@@ -1,7 +1,5 @@
 package Classes;
 
-import Interfaces.iActorBehaviour;
-
 public class SpecialClient extends Actor {
     private final int vipId;
     public SpecialClient(String name, int id) {
@@ -9,27 +7,42 @@ public class SpecialClient extends Actor {
         this.vipId = id;
     }
 
+    /**
+     * SpecialClient class method
+     * @return clint's VIP id number
+     */
     public int getVipId() {
         return vipId;
     }
 
-    public void setTakeOrder(boolean takeOrder) {super.isTakeOrder = takeOrder;}
+    public void setTakeOrder(boolean takeOrder) {super.isOrderTaken = takeOrder;}
 
     public void setMakeOrder(boolean makeOrder){
-        super.isMakeOrder = isTakeOrder;
+        super.isOrderMade = isOrderTaken;
     }
 
     @Override
-    public boolean isMakeOrder() {return super.isMakeOrder;}
+    public boolean isOrderMade() {return super.isOrderMade;}
 
     @Override
-    public boolean isTakeOrder() {return super.isTakeOrder;}
+    public boolean isOrderTaken() {return super.isOrderTaken;}
 
     @Override
     public Actor getActor() {return this;}
 
     @Override
+    public boolean isReturnOrder() {
+        return super.isReturnOrder();
+    }
+
+    @Override
+    public void setReturnOrder(boolean isReturnOrder) {
+        super.setReturnOrder(isReturnOrder);
+    }
+
+    @Override
     public String getName() {
         return super.name;
     }
+
 }

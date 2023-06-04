@@ -4,7 +4,7 @@ public interface iQueueBehaviour {
 
     /**
      * Java interface method. This method accepts visitor to the queue
-     * @param actor - Instance of Actor Java class
+     * @param actor Instance of Actor Java class
      */
     void takeInQueue(iActorBehaviour actor);
 

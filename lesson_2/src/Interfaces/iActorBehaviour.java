@@ -21,13 +21,13 @@ public interface iActorBehaviour {
      * Indicates whether the visitor made an order
      * @return "True" if the order is placed and "False" if the order isn't placed
      */
-    boolean isMakeOrder();
+    boolean isOrderMade();
 
     /**
      * Indicates whether the visitor made an order
      * @return "True" if the order is picked up and "False" if the order isn't picked up
      */
-    boolean isTakeOrder();
+    boolean isOrderTaken();
 
     /**
      * Java interface method

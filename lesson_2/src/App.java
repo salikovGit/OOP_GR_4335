@@ -1,24 +1,26 @@
 import Classes.*;
-import Interfaces.iActorBehaviour;
 
 public class App {
     public static void main(String[] args) throws Exception {
         Market market = new Market();
-        iActorBehaviour client1 = new OrdinaryClient("Boris");
-        iActorBehaviour client2 = new OrdinaryClient("Dasha");
-        iActorBehaviour client3 = new SpecialClient("President", 1);
+
+        Actor client1 = new OrdinaryClient("Boris");
+        Actor client2 = new OrdinaryClient("Dasha");
+        Actor promClient1 = new PromotionClient("Petr", "Black friday");
+        Actor promClient2 = new PromotionClient("Alex", "Black friday");
+        Actor promClient3 = new PromotionClient("Andy", "Black friday");
 
         market.acceptToMarket(client1);
         market.acceptToMarket(client2);
-        market.acceptToMarket(client3);
-        market.acceptToMarket(new TaxService());
+        market.acceptToMarket(new TaxService("Audit"));
+        market.acceptToMarket(promClient1);
+        market.acceptToMarket(promClient2);
+        market.acceptToMarket(promClient3);
+        PromotionClient.setClientsMaxQuantity(2);
 
+        client1.setReturnOrder(true);
+        client2.setReturnOrder(true);
+        promClient2.setReturnOrder(true);
         market.update();
-
-        Actor promClient1 = new PromotionClient("Petr1", "Black friday");
-        Actor promClient2 = new PromotionClient("Petr2", "Black friday");
-        Actor promClient3 = new PromotionClient("Petr3", "Black friday");
-        System.out.println(PromotionClient.getPromotionClintId());
-
-    }
+            }
 }
