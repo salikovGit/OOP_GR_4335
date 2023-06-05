@@ -1,14 +1,14 @@
 import Classes.*;
 
 public class App {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         Market market = new Market();
 
         Actor client1 = new OrdinaryClient("Boris");
         Actor client2 = new OrdinaryClient("Dasha");
-        Actor promClient1 = new PromotionClient("Petr", "Black friday");
-        Actor promClient2 = new PromotionClient("Alex", "Black friday");
-        Actor promClient3 = new PromotionClient("Andy", "Black friday");
+        PromotionClient promClient1 = new PromotionClient("Petr", "Black friday");
+        PromotionClient promClient2 = new PromotionClient("Alex", "Black friday");
+        PromotionClient promClient3 = new PromotionClient("Andy", "Black friday");
 
         market.acceptToMarket(client1);
         market.acceptToMarket(client2);
@@ -22,5 +22,5 @@ public class App {
         client2.setReturnOrder(true);
         promClient2.setReturnOrder(true);
         market.update();
-            }
+    }
 }

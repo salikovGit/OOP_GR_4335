@@ -2,9 +2,9 @@ package Classes;
 
 public class PromotionClient extends OrdinaryClient{
 
-    private int promotionClintId;
+    private int promotionClintId = 0;
     private static int clientsMaxQuantity = 10;
-    private String promotionName;
+    private final String promotionName;
 
     /**
      * Java class PromotionClint extends OrdinaryClient
@@ -14,7 +14,7 @@ public class PromotionClient extends OrdinaryClient{
     public PromotionClient(String name, String promotionName) {
         super(name);
         this.promotionName = promotionName;
-        ++promotionClintId;
+        this.promotionClintId ++;
     }
 
     /**
@@ -51,7 +51,7 @@ public class PromotionClient extends OrdinaryClient{
      * @return ID of this promotion client
      */
     public int getPromotionClintId() {
-        return promotionClintId;
+        return this.promotionClintId;
     }
 
     /**
