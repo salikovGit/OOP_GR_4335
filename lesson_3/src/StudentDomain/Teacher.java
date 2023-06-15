@@ -3,6 +3,10 @@ package StudentDomain;
 public class Teacher extends Person{
     private String acadDegree;
 
+    public void setAcadDegree(String acadDegree) {
+        this.acadDegree = acadDegree;
+    }
+
     /**
      * Java class constructor
      * @param firstName Teacher's first name

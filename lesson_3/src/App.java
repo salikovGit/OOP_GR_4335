@@ -2,6 +2,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import Controllers.StudentController;
+import Services.AverageAge;
+import Services.StudentService;
 import StudentDomain.Person;
 import StudentDomain.Student;
 import StudentDomain.StudentGroup;
@@ -63,5 +66,10 @@ public class App {
             System.out.println(group);
         }
         System.out.println(ss);
+        StudentService studServ = new StudentService();
+        studServ.create("Piter", "Parker", 21);
+        studServ.create("Mary", "Jane", 18);
+        studServ.create("May", "Parker", 45);
+        AverageAge.avgAge(studServ.getAll());
     }
 }
