@@ -1,6 +1,10 @@
 public class ComplexCalc implements iCalculable{
     private final int[] primaryArgs;
 
+    /**
+     * Java class Complex calculator constructor
+     * @param primaryArgs Initial number
+     */
     public ComplexCalc(int[] primaryArgs) {
         this.primaryArgs = primaryArgs;
     }
@@ -28,7 +32,7 @@ public class ComplexCalc implements iCalculable{
     }
 
     @Override
-    public iCalculable dev(int[] args) {
+    public iCalculable div(int[] args) {
         int[] initArgs = {primaryArgs[0], primaryArgs[1]};
         primaryArgs[0] = (initArgs[0] * args[0] + initArgs[1] * args[1])/(args[0] * args[0] + args[1] * args[1]);
         primaryArgs[1] = (initArgs[1] * args[0] - initArgs[0] * args[1])/(args[0] * args[0] + args[1] * args[1]);

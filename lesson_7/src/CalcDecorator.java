@@ -1,6 +1,13 @@
 public class CalcDecorator implements iCalculable {
     private iCalculable oldCalc;
     private Logger logger;
+
+    /**
+     * Java class Decorator constructor
+     * Unites calculator and logger
+     * @param oldCalc Instance of iCalculable
+     * @param log Instance of logger
+     */
     public CalcDecorator(iCalculable oldCalc, Logger log) {
         this.oldCalc = oldCalc;
         this.logger = log;
@@ -27,11 +34,11 @@ public class CalcDecorator implements iCalculable {
     }
 
     @Override
-    public iCalculable dev(int[] args) {
+    public iCalculable div(int[] args) {
         int[] primaryArgs = oldCalc.getResult();
         logger.log(String.format("Первое значение калькулятора %d %di. Начало вызова метода деление с параметром %d %di",
                 primaryArgs[0], primaryArgs[1], args[0], args[1]));
-        iCalculable result = oldCalc.dev(args);
+        iCalculable result = oldCalc.div(args);
         logger.log("Вызова метода multi произошел");
         return result;
     }

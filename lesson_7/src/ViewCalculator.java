@@ -18,6 +18,9 @@ public class ViewCalculator {
             int[] primaryArg = promptInt("Введите первое число через пробел: ");
             calculator.init(primaryArg);
             //iCalculable calculator = calculableFactory.create(primaryArg);
+            /**
+             * Main user interface
+             */
             while (true) {
                 String cmd = prompt("Введите команду (*, +, /, =) : ");
                 if (cmd.equals("*")) {
@@ -32,7 +35,7 @@ public class ViewCalculator {
                 }
                 if (cmd.equals("/")) {
                     int[] args = promptInt("Введите второе число через пробел: ");
-                    calculator.dev(args);
+                    calculator.div(args);
                     continue;
                 }
                 if (cmd.equals("=")) {
@@ -49,12 +52,23 @@ public class ViewCalculator {
         }
     }
 
+    /**
+     * Method reads calculation command from console
+     * @param message Text showed to user
+     * @return User calculation commands
+     */
     private String prompt(String message) {
         Scanner in = new Scanner(System.in);
         System.out.print(message);
         return in.nextLine();
     }
 
+    /**
+     * Method reads complex number from console
+     * @param message Text showed to user
+     * @return Entered number contained in list
+     * @throws IOException
+     */
     private int[] promptInt(String message) throws IOException {
         System.out.println(message);
         BufferedReader bi = new BufferedReader(new InputStreamReader(System.in));
