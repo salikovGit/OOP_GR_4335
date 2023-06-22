@@ -13,16 +13,29 @@ public class Controller {
     private iGetModel model;
     private List<Student> students;
 
+    /**
+     * Java class Controller constructor.
+     * Initialises application
+     * @param view instance of class View
+     * @param model instance of class Model
+     */
     public Controller(iGetView view, iGetModel model) {
         this.view = view;
         this.model = model;
         this.students = new ArrayList<Student>();
     }
 
+    /**
+     * Java class method. Returns list of students included in model
+     */
     public void getAllStudents() {
         students = model.getAllStudents();
     }
 
+    /**
+     * Some test method
+     * @return true if list of students id not empty
+     */
     public boolean testData() {
         if (students.size() > 0) {
             return true;
@@ -31,6 +44,9 @@ public class Controller {
         }
     }
 
+    /**
+     * Method updates students list in view
+     */
     public void update() {
         //MVP
         getAllStudents();
@@ -43,6 +59,9 @@ public class Controller {
         }
     }
 
+    /**
+     * Main app controller
+     */
     public void run()
     {
         Commands com = Commands.NONE;

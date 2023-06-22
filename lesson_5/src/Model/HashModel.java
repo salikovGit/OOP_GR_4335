@@ -8,6 +8,10 @@ import java.util.List;
 public class HashModel implements iGetModel{
     private final HashMap<Integer, Student> students;
 
+    /**
+     * Java class HasModel constructor
+     * @param students List of students who will be included in model
+     */
     public HashModel(List<Student> students) {
         this.students = new HashMap<>();
         for (int i = 0; i < students.size(); i++) {

@@ -61,7 +61,7 @@ public class FileModel implements iGetModel {
         {
             for(Student pers : students)
             {
-                fw.write(pers.getFirstName()+" "+pers.getSecondName()+" "+pers.getAge()+" "+pers.getId());
+                fw.write(pers.getFirstName()+" "+pers.getLastName()+" "+pers.getAge()+" "+pers.getId());
                 fw.append('\n');
             }
             fw.flush();

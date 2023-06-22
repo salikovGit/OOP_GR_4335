@@ -25,7 +25,7 @@ public class Student extends Person implements Comparable<Student>{
     public String toString() {
         return "Student{" +
                 "firstName='" + super.firstName + '\'' +
-                ", secondName='" + super.getSecondName() + '\'' +
+                ", secondName='" + super.getLastName() + '\'' +
                 ", age=" + super.getAge() +
                 ", id=" + id +
                 '}';

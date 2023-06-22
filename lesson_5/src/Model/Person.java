@@ -2,51 +2,52 @@ package Model;
 
 public class Person {
     protected String firstName;
-    protected String secondName;
+    protected String lastName;
     protected int age;
 
     /**
      * Конструктор класса
      * @param firstName Имя
-     * @param secondName Фамилия
+     * @param lastName Фамилия
      * @param age Возраст
      */
-    public Person(String firstName, String secondName, int age)
+    public Person(String firstName, String lastName, int age)
     {
         this.firstName=firstName;
-        this.secondName=secondName;
+        this.lastName = lastName;
         this.age=age;
     }
 
+    /**
+     * Java class Person method
+     * @return Persons first name
+     */
     public String getFirstName() {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    /**
+     * Java class Person method
+     * @return Persons last name
+     */
+    public String getLastName() {
+        return lastName;
     }
 
-    public String getSecondName() {
-        return secondName;
-    }
 
-    public void setSecondName(String secondName) {
-        this.secondName = secondName;
-    }
-
+    /**
+     * Java class Person method
+     * @return Persons age
+     */
     public int getAge() {
         return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
     }
 
     @Override
     public String toString() {
         return "Person{" +
                 "firstName='" + firstName + '\'' +
-                ", secondName='" + secondName + '\'' +
+                ", secondName='" + lastName + '\'' +
                 ", age=" + age +
                 '}';
     }
